@@ -1,4 +1,5 @@
 #include "client.h"
+#include <commons/log.h>
 
 int main(void)
 {
@@ -18,8 +19,7 @@ int main(void)
 
 	// Usando el logger creado previamente
 	// Escribi: "Hola! Soy un log"
-
-
+	log_info(logger, "Hola! Soy un log");
 	/* ---------------- ARCHIVOS DE CONFIGURACION ---------------- */
 
 	config = iniciar_config();
@@ -54,14 +54,18 @@ int main(void)
 
 t_log* iniciar_logger(void)
 {
-	t_log* nuevo_logger;
+	t_log* nuevo_logger = log_create("tp0.log", "tp0", true, LOG_LEVEL_INFO);
+
+	if (nuevo_logger == NULL) {
+		abort();
+	}
 
 	return nuevo_logger;
 }
 
 t_config* iniciar_config(void)
 {
-	t_config* nuevo_config;
+	t_config* nuevo_config = 
 
 	return nuevo_config;
 }
